@@ -1,0 +1,357 @@
+{
+  "id": "needle-router",
+  "revision": 0,
+  "last_node_id": 7,
+  "last_link_id": 5,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "NeedleRouter",
+      "pos": [
+        40,
+        40
+      ],
+      "size": [
+        400,
+        340
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "localized_name": "index",
+          "name": "index",
+          "slot_index": 0,
+          "type": "INT",
+          "links": [
+            1
+          ]
+        },
+        {
+          "localized_name": "route",
+          "name": "route",
+          "slot_index": 1,
+          "type": "STRING",
+          "links": [
+            2
+          ]
+        },
+        {
+          "localized_name": "confidence",
+          "name": "confidence",
+          "slot_index": 2,
+          "type": "FLOAT",
+          "links": [
+            3
+          ]
+        },
+        {
+          "localized_name": "gated",
+          "name": "gated",
+          "slot_index": 3,
+          "type": "BOOLEAN",
+          "links": null
+        },
+        {
+          "localized_name": "info",
+          "name": "info",
+          "slot_index": 4,
+          "type": "STRING",
+          "links": [
+            4
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "NeedleRouter",
+        "cnr_id": "comfyui-needle"
+      },
+      "widgets_values": [
+        "remove the car from this photo",
+        "txt2img: generate a brand new image from a description\nimg2img: change or restyle an image the user already has\ninpaint: replace or remove part of an existing image\nupscale: enlarge an image or add detail without changing the content",
+        0.0,
+        0,
+        ""
+      ],
+      "title": "request -> branch index"
+    },
+    {
+      "id": 2,
+      "type": "PreviewAny",
+      "pos": [
+        500,
+        40
+      ],
+      "size": [
+        320,
+        110
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "source",
+          "name": "source",
+          "type": "*",
+          "link": 1
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "STRING",
+          "name": "STRING",
+          "slot_index": 0,
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewAny",
+        "cnr_id": "comfyui-needle"
+      },
+      "widgets_values": [],
+      "title": "INT for a switch node"
+    },
+    {
+      "id": 3,
+      "type": "PreviewAny",
+      "pos": [
+        500,
+        180
+      ],
+      "size": [
+        320,
+        110
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "source",
+          "name": "source",
+          "type": "*",
+          "link": 2
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "STRING",
+          "name": "STRING",
+          "slot_index": 0,
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewAny",
+        "cnr_id": "comfyui-needle"
+      },
+      "widgets_values": [],
+      "title": "route name"
+    },
+    {
+      "id": 4,
+      "type": "PreviewAny",
+      "pos": [
+        500,
+        320
+      ],
+      "size": [
+        320,
+        110
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "source",
+          "name": "source",
+          "type": "*",
+          "link": 3
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "STRING",
+          "name": "STRING",
+          "slot_index": 0,
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewAny",
+        "cnr_id": "comfyui-needle"
+      },
+      "widgets_values": [],
+      "title": "confidence (a nonsense-catcher, not a truth signal)"
+    },
+    {
+      "id": 5,
+      "type": "PreviewAny",
+      "pos": [
+        500,
+        460
+      ],
+      "size": [
+        320,
+        110
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "source",
+          "name": "source",
+          "type": "*",
+          "link": 4
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "STRING",
+          "name": "STRING",
+          "slot_index": 0,
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewAny",
+        "cnr_id": "comfyui-needle"
+      },
+      "widgets_values": [],
+      "title": "what it decided and why"
+    },
+    {
+      "id": 6,
+      "type": "NeedleStatus",
+      "pos": [
+        40,
+        440
+      ],
+      "size": [
+        330,
+        100
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "localized_name": "status",
+          "name": "status",
+          "slot_index": 0,
+          "type": "STRING",
+          "links": [
+            5
+          ]
+        },
+        {
+          "localized_name": "ok",
+          "name": "ok",
+          "slot_index": 1,
+          "type": "BOOLEAN",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "NeedleStatus",
+        "cnr_id": "comfyui-needle"
+      },
+      "widgets_values": [],
+      "title": "engine reachable?"
+    },
+    {
+      "id": 7,
+      "type": "PreviewAny",
+      "pos": [
+        40,
+        580
+      ],
+      "size": [
+        320,
+        110
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "source",
+          "name": "source",
+          "type": "*",
+          "link": 5
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "STRING",
+          "name": "STRING",
+          "slot_index": 0,
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewAny",
+        "cnr_id": "comfyui-needle"
+      },
+      "widgets_values": [],
+      "title": "engine status"
+    }
+  ],
+  "links": [
+    [
+      1,
+      1,
+      0,
+      2,
+      0,
+      "INT"
+    ],
+    [
+      2,
+      1,
+      1,
+      3,
+      0,
+      "STRING"
+    ],
+    [
+      3,
+      1,
+      2,
+      4,
+      0,
+      "FLOAT"
+    ],
+    [
+      4,
+      1,
+      4,
+      5,
+      0,
+      "STRING"
+    ],
+    [
+      5,
+      6,
+      0,
+      7,
+      0,
+      "STRING"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {},
+  "version": 0.4
+}

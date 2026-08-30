@@ -1,0 +1,532 @@
+{
+  "id": "needle-read-workflow",
+  "revision": 0,
+  "last_node_id": 8,
+  "last_link_id": 7,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "WorkflowFromImage",
+      "pos": [
+        40,
+        40
+      ],
+      "size": [
+        330,
+        110
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "localized_name": "json",
+          "name": "json",
+          "slot_index": 0,
+          "type": "STRING",
+          "links": [
+            1
+          ]
+        },
+        {
+          "localized_name": "source",
+          "name": "source",
+          "slot_index": 1,
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "localized_name": "found",
+          "name": "found",
+          "slot_index": 2,
+          "type": "BOOLEAN",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "WorkflowFromImage",
+        "cnr_id": "comfyui-needle"
+      },
+      "widgets_values": [
+        "FLUX_GGUF_firstpass_12953_.png",
+        "prompt"
+      ],
+      "title": "1. pick a PNG made by ComfyUI"
+    },
+    {
+      "id": 2,
+      "type": "WorkflowParse",
+      "pos": [
+        430,
+        40
+      ],
+      "size": [
+        360,
+        320
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "json_text",
+          "name": "json_text",
+          "type": "STRING",
+          "widget": {
+            "name": "json_text"
+          },
+          "link": 1
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "positive",
+          "name": "positive",
+          "slot_index": 0,
+          "type": "STRING",
+          "links": [
+            2
+          ]
+        },
+        {
+          "localized_name": "negative",
+          "name": "negative",
+          "slot_index": 1,
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "localized_name": "steps",
+          "name": "steps",
+          "slot_index": 2,
+          "type": "INT",
+          "links": null
+        },
+        {
+          "localized_name": "cfg",
+          "name": "cfg",
+          "slot_index": 3,
+          "type": "FLOAT",
+          "links": null
+        },
+        {
+          "localized_name": "sampler_name",
+          "name": "sampler_name",
+          "slot_index": 4,
+          "type": "COMBO",
+          "links": null
+        },
+        {
+          "localized_name": "scheduler",
+          "name": "scheduler",
+          "slot_index": 5,
+          "type": "COMBO",
+          "links": null
+        },
+        {
+          "localized_name": "seed",
+          "name": "seed",
+          "slot_index": 6,
+          "type": "INT",
+          "links": [
+            5
+          ]
+        },
+        {
+          "localized_name": "width",
+          "name": "width",
+          "slot_index": 7,
+          "type": "INT",
+          "links": null
+        },
+        {
+          "localized_name": "height",
+          "name": "height",
+          "slot_index": 8,
+          "type": "INT",
+          "links": null
+        },
+        {
+          "localized_name": "denoise",
+          "name": "denoise",
+          "slot_index": 9,
+          "type": "FLOAT",
+          "links": null
+        },
+        {
+          "localized_name": "model",
+          "name": "model",
+          "slot_index": 10,
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "localized_name": "loras_json",
+          "name": "loras_json",
+          "slot_index": 11,
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "localized_name": "result",
+          "name": "result",
+          "slot_index": 12,
+          "type": "NEEDLE_RESULT",
+          "links": [
+            6
+          ]
+        },
+        {
+          "localized_name": "parsed",
+          "name": "parsed",
+          "slot_index": 13,
+          "type": "BOOLEAN",
+          "links": null
+        },
+        {
+          "localized_name": "missing",
+          "name": "missing",
+          "slot_index": 14,
+          "type": "STRING",
+          "links": [
+            3
+          ]
+        },
+        {
+          "localized_name": "info",
+          "name": "info",
+          "slot_index": 15,
+          "type": "STRING",
+          "links": [
+            4
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "WorkflowParse",
+        "cnr_id": "comfyui-needle"
+      },
+      "widgets_values": [
+        "",
+        20,
+        7.0,
+        1024,
+        1024,
+        "euler",
+        "simple"
+      ],
+      "title": "2. walk the graph"
+    },
+    {
+      "id": 3,
+      "type": "PreviewAny",
+      "pos": [
+        860,
+        40
+      ],
+      "size": [
+        320,
+        110
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "source",
+          "name": "source",
+          "type": "*",
+          "link": 2
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "STRING",
+          "name": "STRING",
+          "slot_index": 0,
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewAny",
+        "cnr_id": "comfyui-needle"
+      },
+      "widgets_values": [],
+      "title": "positive prompt"
+    },
+    {
+      "id": 4,
+      "type": "PreviewAny",
+      "pos": [
+        860,
+        200
+      ],
+      "size": [
+        320,
+        110
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "source",
+          "name": "source",
+          "type": "*",
+          "link": 3
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "STRING",
+          "name": "STRING",
+          "slot_index": 0,
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewAny",
+        "cnr_id": "comfyui-needle"
+      },
+      "widgets_values": [],
+      "title": "NOT in the graph (defaults used)"
+    },
+    {
+      "id": 5,
+      "type": "PreviewAny",
+      "pos": [
+        860,
+        360
+      ],
+      "size": [
+        320,
+        110
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "source",
+          "name": "source",
+          "type": "*",
+          "link": 4
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "STRING",
+          "name": "STRING",
+          "slot_index": 0,
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewAny",
+        "cnr_id": "comfyui-needle"
+      },
+      "widgets_values": [],
+      "title": "what was recovered"
+    },
+    {
+      "id": 6,
+      "type": "PreviewAny",
+      "pos": [
+        860,
+        520
+      ],
+      "size": [
+        320,
+        110
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "source",
+          "name": "source",
+          "type": "*",
+          "link": 5
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "STRING",
+          "name": "STRING",
+          "slot_index": 0,
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewAny",
+        "cnr_id": "comfyui-needle"
+      },
+      "widgets_values": [],
+      "title": "seed"
+    },
+    {
+      "id": 7,
+      "type": "NeedleGetField",
+      "pos": [
+        860,
+        660
+      ],
+      "size": [
+        330,
+        200
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "result",
+          "name": "result",
+          "type": "NEEDLE_RESULT",
+          "link": 6
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "value",
+          "name": "value",
+          "slot_index": 0,
+          "type": "*",
+          "links": [
+            7
+          ]
+        },
+        {
+          "localized_name": "string",
+          "name": "string",
+          "slot_index": 1,
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "localized_name": "found",
+          "name": "found",
+          "slot_index": 2,
+          "type": "BOOLEAN",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "NeedleGetField",
+        "cnr_id": "comfyui-needle"
+      },
+      "widgets_values": [
+        "sampler_passes",
+        "int",
+        "1"
+      ],
+      "title": "any other key, e.g. sampler_passes"
+    },
+    {
+      "id": 8,
+      "type": "PreviewAny",
+      "pos": [
+        1230,
+        660
+      ],
+      "size": [
+        320,
+        110
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "source",
+          "name": "source",
+          "type": "*",
+          "link": 7
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "STRING",
+          "name": "STRING",
+          "slot_index": 0,
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewAny",
+        "cnr_id": "comfyui-needle"
+      },
+      "widgets_values": [],
+      "title": "sampler_passes"
+    }
+  ],
+  "links": [
+    [
+      1,
+      1,
+      0,
+      2,
+      0,
+      "STRING"
+    ],
+    [
+      2,
+      2,
+      0,
+      3,
+      0,
+      "STRING"
+    ],
+    [
+      3,
+      2,
+      14,
+      4,
+      0,
+      "STRING"
+    ],
+    [
+      4,
+      2,
+      15,
+      5,
+      0,
+      "STRING"
+    ],
+    [
+      5,
+      2,
+      6,
+      6,
+      0,
+      "INT"
+    ],
+    [
+      6,
+      2,
+      12,
+      7,
+      0,
+      "NEEDLE_RESULT"
+    ],
+    [
+      7,
+      7,
+      0,
+      8,
+      0,
+      "*"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {},
+  "version": 0.4
+}

@@ -1,0 +1,403 @@
+{
+  "id": "needle-extract",
+  "revision": 0,
+  "last_node_id": 7,
+  "last_link_id": 6,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "NeedleExtract",
+      "pos": [
+        40,
+        40
+      ],
+      "size": [
+        400,
+        400
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "localized_name": "result",
+          "name": "result",
+          "slot_index": 0,
+          "type": "NEEDLE_RESULT",
+          "links": [
+            3,
+            5
+          ]
+        },
+        {
+          "localized_name": "json",
+          "name": "json",
+          "slot_index": 1,
+          "type": "STRING",
+          "links": [
+            1
+          ]
+        },
+        {
+          "localized_name": "confidence",
+          "name": "confidence",
+          "slot_index": 2,
+          "type": "FLOAT",
+          "links": null
+        },
+        {
+          "localized_name": "success",
+          "name": "success",
+          "slot_index": 3,
+          "type": "BOOLEAN",
+          "links": null
+        },
+        {
+          "localized_name": "info",
+          "name": "info",
+          "slot_index": 4,
+          "type": "STRING",
+          "links": [
+            2
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "NeedleExtract",
+        "cnr_id": "comfyui-needle"
+      },
+      "widgets_values": [
+        "Invoice from Acme Corp for 1200.50 dollars, due 2026-09-01",
+        "{\n  \"vendor\": \"string\",\n  \"total\": \"number\",\n  \"due_date\": \"string?\"\n}",
+        "",
+        256,
+        true,
+        ""
+      ],
+      "title": "text -> JSON (45M model, CPU, 0 VRAM)"
+    },
+    {
+      "id": 2,
+      "type": "PreviewAny",
+      "pos": [
+        500,
+        40
+      ],
+      "size": [
+        320,
+        110
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "source",
+          "name": "source",
+          "type": "*",
+          "link": 1
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "STRING",
+          "name": "STRING",
+          "slot_index": 0,
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewAny",
+        "cnr_id": "comfyui-needle"
+      },
+      "widgets_values": [],
+      "title": "JSON"
+    },
+    {
+      "id": 3,
+      "type": "PreviewAny",
+      "pos": [
+        500,
+        200
+      ],
+      "size": [
+        320,
+        110
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "source",
+          "name": "source",
+          "type": "*",
+          "link": 2
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "STRING",
+          "name": "STRING",
+          "slot_index": 0,
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewAny",
+        "cnr_id": "comfyui-needle"
+      },
+      "widgets_values": [],
+      "title": "reasoning + speed"
+    },
+    {
+      "id": 4,
+      "type": "NeedleGetField",
+      "pos": [
+        500,
+        380
+      ],
+      "size": [
+        330,
+        200
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "result",
+          "name": "result",
+          "type": "NEEDLE_RESULT",
+          "link": 3
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "value",
+          "name": "value",
+          "slot_index": 0,
+          "type": "*",
+          "links": [
+            4
+          ]
+        },
+        {
+          "localized_name": "string",
+          "name": "string",
+          "slot_index": 1,
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "localized_name": "found",
+          "name": "found",
+          "slot_index": 2,
+          "type": "BOOLEAN",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "NeedleGetField",
+        "cnr_id": "comfyui-needle"
+      },
+      "widgets_values": [
+        "vendor",
+        "string",
+        "unknown"
+      ],
+      "title": "ANY output -> STRING"
+    },
+    {
+      "id": 5,
+      "type": "PreviewAny",
+      "pos": [
+        880,
+        380
+      ],
+      "size": [
+        320,
+        110
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "source",
+          "name": "source",
+          "type": "*",
+          "link": 4
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "STRING",
+          "name": "STRING",
+          "slot_index": 0,
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewAny",
+        "cnr_id": "comfyui-needle"
+      },
+      "widgets_values": [],
+      "title": "vendor"
+    },
+    {
+      "id": 6,
+      "type": "NeedleGetField",
+      "pos": [
+        500,
+        620
+      ],
+      "size": [
+        330,
+        200
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "result",
+          "name": "result",
+          "type": "NEEDLE_RESULT",
+          "link": 5
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "value",
+          "name": "value",
+          "slot_index": 0,
+          "type": "*",
+          "links": [
+            6
+          ]
+        },
+        {
+          "localized_name": "string",
+          "name": "string",
+          "slot_index": 1,
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "localized_name": "found",
+          "name": "found",
+          "slot_index": 2,
+          "type": "BOOLEAN",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "NeedleGetField",
+        "cnr_id": "comfyui-needle"
+      },
+      "widgets_values": [
+        "total",
+        "float",
+        "0"
+      ],
+      "title": "ANY output -> FLOAT"
+    },
+    {
+      "id": 7,
+      "type": "PreviewAny",
+      "pos": [
+        880,
+        620
+      ],
+      "size": [
+        320,
+        110
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "source",
+          "name": "source",
+          "type": "*",
+          "link": 6
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "STRING",
+          "name": "STRING",
+          "slot_index": 0,
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewAny",
+        "cnr_id": "comfyui-needle"
+      },
+      "widgets_values": [],
+      "title": "total"
+    }
+  ],
+  "links": [
+    [
+      1,
+      1,
+      1,
+      2,
+      0,
+      "STRING"
+    ],
+    [
+      2,
+      1,
+      4,
+      3,
+      0,
+      "STRING"
+    ],
+    [
+      3,
+      1,
+      0,
+      4,
+      0,
+      "NEEDLE_RESULT"
+    ],
+    [
+      4,
+      4,
+      0,
+      5,
+      0,
+      "*"
+    ],
+    [
+      5,
+      1,
+      0,
+      6,
+      0,
+      "NEEDLE_RESULT"
+    ],
+    [
+      6,
+      6,
+      0,
+      7,
+      0,
+      "*"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {},
+  "version": 0.4
+}
