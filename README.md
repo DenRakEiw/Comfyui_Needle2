@@ -134,9 +134,9 @@ does not make judgements about the text. No such node ships here.
 
 ## The workflow nodes
 
-ComfyUI only — no A1111 or Forge parsing, and no model: a workflow graph is exact
-structured data, walking it is exact too, and a 45M model reading JSON through a
-256-token window would be strictly worse.
+No model is involved here. A workflow graph is exact structured data, walking it is
+exact too, and a 45M model reading JSON through a 256-token window would be strictly
+worse.
 
 Measured on **400 real graphs** (0 exceptions), counting only the 129 that contain a
 sampler:
@@ -159,7 +159,7 @@ Three things make this harder than it looks:
   `SamplerCustomAdvanced` accounts for 1031 of the sampler nodes and plain `KSampler` for
   51. The walk follows the sampler's own links — guider, sigmas, noise — instead of
   matching a class name.
-- **Multi-pass graphs share nodes.** A hires-fix or LTXV-upscale workflow has two samplers
+- **Multi-pass graphs share nodes.** A two-stage or latent-upscale workflow has two samplers
   whose conditioning chains overlap, so "the first sampler in the JSON" mixes settings
   from both passes. `Workflow Parse` walks back from the output node to find the pass that
   actually produced the file, and reports `sampler_passes` when there is more than one.

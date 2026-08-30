@@ -1,8 +1,8 @@
 """Recover generation settings from a ComfyUI `prompt` graph embedded in a PNG.
 
-This is the format that actually matters here: of the 1500 newest images in
-this install, 1496 carry `prompt`/`workflow` chunks and 3 files on the whole
-machine carry an A1111 `parameters` string.
+Almost every image ComfyUI saves carries the executed graph in a `prompt`
+text chunk, so the settings behind a picture can be recovered exactly rather
+than guessed at.
 
 The graph is not walkable by looking for "KSampler". Real workflows here are
 overwhelmingly SamplerCustomAdvanced (1031) + KSamplerSelect (335), with plain
@@ -109,7 +109,7 @@ def all_samplers(graph: dict) -> list:
 def _find_sampler(graph: dict):
     """Pick the sampler that produced the saved image.
 
-    Multi-pass workflows (hires fix, LTXV upscale) contain several samplers
+    Multi-pass workflows (two-stage, latent upscale) contain several samplers
     that share conditioning nodes, so "the first one in the JSON" is arbitrary
     and mixes settings across passes. Walking back from the output node gives
     the pass that actually made this file.
@@ -146,7 +146,7 @@ def _chain(graph: dict, node: dict):
     """Nodes reachable from the sampler, nearest first.
 
     Breadth-first, not depth-first, and the ordering is load-bearing: a
-    multi-pass workflow (LTXV upscale, hires fix) reaches a second sampler's
+    multi-pass workflow (two-stage, latent upscale) reaches a second sampler's
     RandomNoise and sigmas through shared conditioning nodes. Nearest-first
     means the pass we were asked about wins.
     """

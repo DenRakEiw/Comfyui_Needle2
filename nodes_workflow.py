@@ -1,7 +1,7 @@
 """Read a ComfyUI workflow back out of a PNG and turn it into wired values.
 
-ComfyUI only - no A1111 or Forge parsing. That is also what the images on this
-machine are: of the 1500 newest outputs, 1496 carry `prompt`/`workflow` chunks.
+ComfyUI saves the executed graph into a `prompt` text chunk on almost every
+image it writes, so the settings behind a picture can be read back exactly.
 
 Nothing here uses Needle 2. A workflow graph is exact structured data, and
 walking it is exact too; a 45M model reading JSON through a 256-token window
