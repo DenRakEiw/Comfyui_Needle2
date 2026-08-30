@@ -57,6 +57,10 @@ those.
 
 ## Install
 
+**ComfyUI Manager** — search for *ComfyUI Needle 2* and install, then restart ComfyUI.
+
+**Manually:**
+
 ```
 cd ComfyUI/custom_nodes
 git clone https://github.com/DenRakEiw/Comfyui_Needle2
